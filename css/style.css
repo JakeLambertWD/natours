@@ -1,0 +1,125 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+/* Universal Selector reset */
+* {
+	margin: 0;
+	padding: 0;
+	/* The width and height properties (and min/max properties) includes content, padding and border */
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 1.7;
+	color: #777;
+	padding: 30px;
+}
+
+.header {
+	/* vh - Viewport Height */
+	height: 95vh;
+	background-image: linear-gradient(
+			to right bottom,
+			rgba(128, 214, 113, 0.801),
+			rgba(40, 180, 133, 0.801)
+		),
+		url(../img/pexels3.jpg);
+	/* fit image in the element */
+	background-size: cover;
+	/* sets the starting position of the image to the top*/
+	background-position: center;
+	position: relative;
+
+	/* creates a clipping region that sets what part of an element should be shown. Parts that are inside the region are shown, while those outside are hidden. */
+	/* this methods coords always start in the top-left corner polygon(x y, x y, x y, x y) */
+	clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+
+.logo-box {
+	position: absolute;
+	top: 40px;
+	left: 40px;
+}
+
+.logo {
+	height: 35px;
+}
+
+.text-box {
+	position: absolute;
+	/* in relation to parent element */
+	top: 40%;
+	left: 50%;
+	/* in relation to itself */
+	transform: translate(-50%, -50%);
+}
+
+.heading-primary {
+	color: #fff;
+	text-transform: uppercase;
+	/* this gets rid of the animation shake that doesn't look nice */
+	backface-visibility: hidden;
+}
+
+.heading-primary-main {
+	display: block;
+	font-size: 60px;
+	font-weight: 400;
+	letter-spacing: 35px;
+
+	animation-name: moveInLeft;
+	animation-duration: 1s;
+	animation-timing-function: ease-out;
+}
+
+.heading-primary-sub {
+	display: block;
+	font-size: 20px;
+	font-weight: 700;
+	letter-spacing: 17.4px;
+
+	animation: moveInRight 1s ease-out;
+}
+
+@keyframes moveInLeft {
+	0% {
+		opacity: 0;
+		/* animation on the x horizontal plane in relation to itself */
+		transform: translateX(-100px);
+	}
+
+	80% {
+		transform: translateX(10px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes moveInRight {
+	0% {
+		opacity: 0;
+		/* animation on the x horizontal plane in relation to itself */
+		transform: translateX(100px);
+	}
+
+	80% {
+		transform: translateX(-10px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
