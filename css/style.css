@@ -7,12 +7,20 @@ Dark green: #28b485
 
 */
 
-/* Universal Selector reset */
-* {
+/* Universal Selector reset and Psuedo elements */
+*,
+*::after,
+*::before {
 	margin: 0;
 	padding: 0;
-	/* The width and height properties (and min/max properties) includes content, padding and border */
-	box-sizing: border-box;
+	box-sizing: inherit;
+}
+
+/* This the global reference for rem (1rem = 10px) */
+html {
+	/* Best practive to use percentage. So user can edit the default size in their browser */
+	/* The default size is 16px. 62.5% of 16px is 10px */
+	font-size: 62.5%;
 }
 
 body {
@@ -21,9 +29,12 @@ body {
 	font-size: 16px;
 	line-height: 1.7;
 	color: #777;
-	padding: 30px;
+	padding: 3rem;
+	/* The width and height properties (and min/max properties) includes content, padding and border */
+	box-sizing: border-box;
 }
 
+/* Header */
 .header {
 	/* vh - Viewport Height */
 	height: 95vh;
@@ -44,61 +55,70 @@ body {
 	clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 }
 
-.logo-box {
+/* Logo */
+.header__logo-box {
 	position: absolute;
-	top: 40px;
-	left: 40px;
+	top: 4rem;
+	left: 4rem;
 }
 
-.logo {
-	height: 35px;
+.header__logo {
+	height: 3.5rem;
 }
 
-.text-box {
+/* Wrapper */
+.header__text-box {
 	position: absolute;
 	/* in relation to parent element */
 	top: 40%;
 	left: 50%;
 	/* in relation to itself */
 	transform: translate(-50%, -50%);
+	/* this will treat the button as text aswell */
+	text-align: center;
 }
 
+/* H1 */
 .heading-primary {
 	color: #fff;
 	text-transform: uppercase;
 	/* this gets rid of the animation shake that doesn't look nice */
 	backface-visibility: hidden;
+	margin-bottom: 6rem;
 }
 
-.heading-primary-main {
+/* Span */
+.heading-primary--main {
 	display: block;
-	font-size: 60px;
+	font-size: 6rem;
 	font-weight: 400;
-	letter-spacing: 35px;
+	letter-spacing: 3.5rem;
 
 	animation-name: moveInLeft;
 	animation-duration: 1s;
 	animation-timing-function: ease-out;
 }
 
-.heading-primary-sub {
+/* Span */
+.heading-primary--sub {
 	display: block;
-	font-size: 20px;
+	font-size: 2rem;
 	font-weight: 700;
-	letter-spacing: 17.4px;
+	letter-spacing: 1.75rem;
 
 	animation: moveInRight 1s ease-out;
 }
 
+/* Animations */
 @keyframes moveInLeft {
 	0% {
 		opacity: 0;
 		/* animation on the x horizontal plane in relation to itself */
-		transform: translateX(-100px);
+		transform: translateX(-10rem);
 	}
 
 	80% {
-		transform: translateX(10px);
+		transform: translateX(1rem);
 	}
 
 	100% {
@@ -111,15 +131,89 @@ body {
 	0% {
 		opacity: 0;
 		/* animation on the x horizontal plane in relation to itself */
-		transform: translateX(100px);
+		transform: translateX(10rem);
 	}
 
 	80% {
-		transform: translateX(-10px);
+		transform: translateX(-1rem);
 	}
 
 	100% {
 		opacity: 1;
 		transform: translateX(0);
 	}
+}
+
+@keyframes moveInButton {
+	0% {
+		opacity: 0;
+		/* animation on the x horizontal plane in relation to itself */
+		transform: translateY(3rem);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translate(0);
+	}
+}
+
+/* Button Psuedo Classes */
+.btn:link,
+.btn:visited {
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 1.5rem 4rem;
+	display: inline-block;
+	border-radius: 10rem;
+	transition: all 0.2s;
+	position: relative;
+	font-size: 1.6rem;
+}
+
+/* Psuedo animations */
+
+.btn:hover {
+	transform: translateY(-3px);
+	/* X Y blur color opacity */
+	box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+	transform: translateY(-1px);
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.btn--white {
+	background-color: #fff;
+	color: #777;
+}
+
+.btn::after {
+	content: '';
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+	border-radius: 10rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	transition: all 0.4s;
+}
+
+.btn--white::after {
+	background-color: #fff;
+}
+
+.btn:hover::after {
+	/* Increases or decreases the size of an element times the param given */
+	transform: scaleX(1.4) scaleY(1.6);
+	opacity: 0;
+}
+
+.btn--animated {
+	/* name duration timing-function delay */
+	animation: moveInButton 0.5s ease-out 0.75s;
+	/* specifies a style for the element when the animation is not playing (before it starts, after it ends, or both). */
+	animation-fill-mode: backwards;
 }
