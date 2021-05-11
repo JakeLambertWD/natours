@@ -1,0 +1,39 @@
+/* Header */
+.header {
+	/* vh - Viewport Height */
+	height: 95vh;
+	/* background image with a gradient over the top of it */
+	background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.801), rgba($color-primary-dark, 0.801)), url(../img/pexels3.jpg);
+	/* fit image in the element */
+	background-size: cover;
+	/* sets the starting position of the image to the top */
+	background-position: center;
+	position: relative;
+
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+	/* creates a clipping region that sets what part of an element should be shown. Parts that are inside the region are shown, while those outside are hidden. */
+	/* this methods coords always start in the top-left corner polygon(x y, x y, x y, x y) */
+	clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+	/* Nesting */
+	&__logo-box {
+		position: absolute;
+		top: 4rem;
+		left: 4rem;
+	}
+
+	&__logo {
+		height: 3.5rem;
+	}
+
+	/* Wrapper */
+	&__text-box {
+		position: absolute;
+		/* in relation to parent element */
+		top: 40%;
+		left: 50%;
+		/* in relation to itself */
+		transform: translate(-50%, -50%);
+		text-align: center;
+	}
+}

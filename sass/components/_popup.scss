@@ -1,0 +1,93 @@
+.popup {
+	height: 100vh;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba($color-black, 0.8);
+	z-index: 11;
+	// make popup section invisible
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.3s;
+
+	&__content {
+		@include absolute-center;
+
+		width: 75%;
+		background-color: $color-white;
+		box-shadow: 0 2rem 4rem rgba($color-black, 0.2);
+		border-radius: 3px;
+		// faking a table format
+		display: table;
+		overflow: hidden;
+		opacity: 0;
+		// translate(-50%, -50%) - you must have all your transform properties under 1 transform. Here we've taken the translate from our mixin and repeated it here so it works
+		transform: scale(0) translate(-50%, -50%);
+		transition: all 0.6s 0.2s;
+	}
+
+	&__left {
+		width: 34%;
+		display: table-cell;
+	}
+
+	&__right {
+		width: 66%;
+		display: table-cell;
+		// align cell in the middle
+		vertical-align: middle;
+		padding: 3rem 5rem;
+	}
+
+	&__img {
+		display: block;
+		width: 97%;
+	}
+
+	&__text {
+		font-size: 1.4rem;
+		margin-bottom: 4rem;
+
+		// custom columns
+		column-count: 2;
+		column-gap: 6rem;
+		column-rule: 1px solid $color-grey-light2;
+
+		// text hyphens
+		-moz-hyphens: auto;
+		-ms-hyphens: auto;
+		-webkit-hyphens: auto;
+		hyphens: auto;
+	}
+
+	// Open states: When the popup section is targeted from a button press (in the url) it will become visible
+	&:target {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	&:target &__content {
+		opacity: 1;
+		transform: scale(1) translate(-50%, -50%);
+	}
+
+	&__close {
+		&:link,
+		&:visited {
+			color: $color-grey-dark;
+			position: absolute;
+			top: 2.5rem;
+			right: 2.5rem;
+			font-size: 3rem;
+			text-decoration: none;
+			display: inline-block;
+			transition: all 0.2s;
+			line-height: 1;
+		}
+
+		&:hover {
+			color: $color-primary;
+		}
+	}
+}

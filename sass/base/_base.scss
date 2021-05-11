@@ -1,0 +1,22 @@
+@import '../abstracts/variables';
+
+/* Universal Selector reset and Psuedo elements */
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+/* This the global reference for rem (1rem = 10px) */
+html {
+	/* Best practice to use percentage. So user can edit the default size in their browser */
+	/* The default size is 16px. 62.5% of 16px is 10px */
+	font-size: 62.5%;
+}
+
+body {
+	/* If you set box-sizing: border-box; on an element, padding and border are included in the width and height */
+	box-sizing: border-box;
+}

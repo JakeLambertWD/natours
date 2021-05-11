@@ -1,0 +1,16 @@
+@mixin clearfix {
+	&::after {
+		content: '';
+		// Let the element behave like a <table> element
+		display: table;
+		// clear both floats (left and right)
+		clear: both;
+	}
+}
+
+@mixin absolute-center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
