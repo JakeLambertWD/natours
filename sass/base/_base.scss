@@ -1,4 +1,5 @@
-@import '../abstracts/variables';
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;700&display=swap');
+@import '../abstracts/mixins';
 
 /* Universal Selector reset and Psuedo elements */
 *,
@@ -6,6 +7,7 @@
 *::before {
 	margin: 0;
 	padding: 0;
+
 	box-sizing: inherit;
 }
 
@@ -13,10 +15,35 @@
 html {
 	/* Best practice to use percentage. So user can edit the default size in their browser */
 	/* The default size is 16px. 62.5% of 16px is 10px */
-	font-size: 62.5%;
+	font-size: 62.5%; // 10px
+
+	// screen size 1200px
+	@include screen-size(tab-land) {
+		font-size: 56.25%; // 1rem = 9px, 9/16 = 56.25%
+	}
+
+	// screen size 900px
+	@include screen-size(tab-port) {
+		font-size: 50%; // 1rem = 8px, 8/16 = 50%
+	}
+
+	// screen size 600px
+	@include screen-size(phone) {
+		font-size: 30%; // 1rem = 4.8px
+	}
+
+	// screen size 1800px
+	@include screen-size(big-desktop) {
+		font-size: 75%; // 1rem = 12px, 12/16 = 75%
+	}
 }
 
 body {
 	/* If you set box-sizing: border-box; on an element, padding and border are included in the width and height */
 	box-sizing: border-box;
+	padding: 3rem;
+
+	@include screen-size(tab-port) {
+		padding: 0;
+	}
 }

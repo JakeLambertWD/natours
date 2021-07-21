@@ -1,4 +1,5 @@
 /* Animations */
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;700&display=swap");
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -30,6 +31,15 @@
     opacity: 1;
     transform: translate(0); } }
 
+/*
+
+Phone: 0 - 600 
+Tablet portrait: 600 - 900 
+Tablet landscape: 900 - 1200 
+NormaL screens: 1200 - 1800 
+Big desktop: 1800+ 
+
+*/
 /* Universal Selector reset and Psuedo elements */
 *,
 *::after,
@@ -43,10 +53,26 @@ html {
   /* Best practice to use percentage. So user can edit the default size in their browser */
   /* The default size is 16px. 62.5% of 16px is 10px */
   font-size: 62.5%; }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (max-width: 37.5em) {
+    html {
+      font-size: 30%; } }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
 
 body {
   /* If you set box-sizing: border-box; on an element, padding and border are included in the width and height */
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  padding: 3rem; }
+  @media (max-width: 56.25em) {
+    body {
+      padding: 0; } }
 
 body {
   font-family: 'Lato', sans-serif;
@@ -54,7 +80,6 @@ body {
   font-size: 16px;
   line-height: 1.7;
   color: #777;
-  padding: 3rem;
   /* If you set box-sizing: border-box; on an element, padding and border are included in the width and height */
   box-sizing: border-box; }
 
@@ -76,12 +101,18 @@ body {
     animation-name: moveInLeft;
     animation-duration: 1s;
     animation-timing-function: ease-out; }
+    @media (max-width: 37.5em) {
+      .heading-primary--main {
+        letter-spacing: 1rem; } }
   .heading-primary--sub {
     display: block;
     font-size: 2rem;
     font-weight: 700;
     letter-spacing: 1.75rem;
     animation: moveInRight 1s ease-out; }
+    @media (max-width: 37.5em) {
+      .heading-primary--sub {
+        letter-spacing: 0.5rem; } }
 
 .heading-secondary {
   font-size: 3.5rem;
@@ -93,6 +124,12 @@ body {
   color: transparent;
   letter-spacing: 0.2rem;
   transition: all 0.2s; }
+  @media (max-width: 56.25em) {
+    .heading-secondary {
+      font-size: 3rem; } }
+  @media (max-width: 37.5em) {
+    .heading-secondary {
+      font-size: 2.5rem; } }
   .heading-secondary:hover {
     transform: skewY(20deg) skewX(15deg) scale(1.1);
     text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
@@ -125,6 +162,15 @@ body {
 .u-margin-bottom-small {
   margin-bottom: 1.5rem !important; }
 
+/*
+
+Phone: 0 - 600 
+Tablet portrait: 600 - 900 
+Tablet landscape: 900 - 1200 
+NormaL screens: 1200 - 1800 
+Big desktop: 1800+ 
+
+*/
 .btn {
   /* Button Psuedo Classes */
   /* Psuedo animations */ }
@@ -371,8 +417,8 @@ body {
     width: 75%; }
   .card__heading-span {
     padding: 0.4rem 1.5rem;
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone; }
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone; }
     .card__heading-span--1 {
       background-image: linear-gradient(to right bottom, rgba(63, 252, 255, 0.85), rgba(0, 157, 220, 0.85)); }
     .card__heading-span--2 {

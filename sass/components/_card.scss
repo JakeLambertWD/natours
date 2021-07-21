@@ -51,7 +51,7 @@
 		transform: rotateY(0);
 	}
 
-	// Front side picture
+	// Front side
 	&__picture {
 		background-size: cover;
 		height: 23rem;
@@ -89,10 +89,10 @@
 
 	&__heading-span {
 		padding: 0.4rem 1.5rem;
-		// to work in Chrome
-		-webkit-box-decoration-break: clone;
 		// when an element is fragmented, this applies styles to each fragment as if it was its own element
 		box-decoration-break: clone;
+		// to work in Chrome
+		-webkit-box-decoration-break: clone;
 
 		&--1 {
 			background-image: linear-gradient(to right bottom, rgba($color-secondary-light, 0.85), rgba($color-secondary-dark, 0.85));
@@ -126,7 +126,7 @@
 		}
 	}
 
-	// Front side styling
+	// Back side
 	&__cta {
 		position: absolute;
 		top: 50%;
